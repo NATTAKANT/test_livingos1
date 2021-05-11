@@ -1,18 +1,22 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+ 
+      <login-form  @save-data="saveData"></login-form>
+    
+  
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import LoginForm from '../components/Home/LoginForm.vue';
 
 export default {
-  name: "Home",
   components: {
-    HelloWorld,
+    LoginForm,
   },
+ methods: { //มันรู้ได้ด้วยตัวเองว่า methods ต้องไปหา modules  - action.js
+    saveData(data) {
+      this.$store.dispatch('welcome/Login', data);
+      this.$router.replace('/welcome');
+    }
+  }
 };
 </script>
